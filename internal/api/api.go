@@ -804,7 +804,7 @@ func readDHT22Device(path string) (int, error) {
 }
 
 const (
-	LightPin = rpi.GPIO17 // BCM convention
+	LightPin = rpi.GPIO4 // BCM convention
 
 	LightDeviceName = "gpiochip0"
 )
