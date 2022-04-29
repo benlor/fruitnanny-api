@@ -804,7 +804,7 @@ func readDHT22Device(path string) (int, error) {
 }
 
 const (
-	LightPin = rpi.GPIO4 // BCM convention
+	LightPin, IRpin = rpi.GPIO17, rpi.GPIO4 // BCM convention
 
 	LightDeviceName = "gpiochip0"
 )
@@ -821,6 +821,9 @@ func NewLight() (*light, error) {
 	}
 
 	line, err := chip.RequestLine(LightPin, gpiod.AsOutput(0))
+        
+        line, err := chip.RequestLine(IRpin, gpiod.AsOutput(0))
+
 	if err != nil {
 		return nil, errors.Wrap(err, "Failed to open request gpio line")
 	}
